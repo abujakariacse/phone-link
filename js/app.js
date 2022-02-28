@@ -21,11 +21,6 @@ const searchPhone = () =>{
 const ShowPhone = phones =>{
     const showResult = document.getElementById('search-result');
     showResult.textContent = ''; 
-    if(phones.length == 0){
-        searchMessage.style.display='block';
-    }
-       
-    else{
         phones.forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col');
@@ -58,7 +53,7 @@ const ShowPhone = phones =>{
     
     const moreInfo = data =>{
         console.log(data);
-        const details = document.getElementById('phone-details');
+        const details =  document.getElementById('phone-details');
         details.textContent='';
         details.style.backgroundColor = '#fff7e0a1';
         const PhoneImg = document.createElement('div');
@@ -78,5 +73,6 @@ const ShowPhone = phones =>{
         `;
         details.appendChild(PhoneImg);
         details.appendChild(phoneDetails);
-    }
+
+        
     }
