@@ -8,6 +8,9 @@ main{
     margin: auto;
     overflow-x: hidden;
 }
+#noResultMessage{
+    display: none;
+}
 .card{
     box-shadow: 7px 7px 7px #88888873;
 }
