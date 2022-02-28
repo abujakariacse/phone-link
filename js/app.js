@@ -3,9 +3,12 @@ const searchMessage= document.getElementById('noResultMessage');
 const searchPhone = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
+    searchField.value = '';
     
-    if(searchField.value == ''){
+    
+    if(searchText == ''){
         searchMessage.style.display='block';
+        
     }
     else{
     searchMessage.style.display='none';
@@ -14,13 +17,20 @@ const searchPhone = () =>{
     .then(res => res.json())
     .then(data => ShowPhone(data.data))
     }
+    
+    
 
 }
+
 
 // Search Result
 const ShowPhone = phones =>{
     const showResult = document.getElementById('search-result');
     showResult.textContent = ''; 
+       if(phones.length == 0){
+           searchMessage.style.display='block';
+       }
+       else{
         phones.forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col');
@@ -30,8 +40,8 @@ const ShowPhone = phones =>{
             <img src="${phone.image}" class="card-img-top" alt="...">
             </div>
             <div class="card-body">
-                <h3 class="card-title text-center">Model: ${phone.phone_name.slice(0,20)}</h3>
-                <h4 class="card-text text-center text-primary">Brand: ${phone.brand}</h4>
+                <h3 class="card-title text-center">${phone.phone_name.slice(0,20)}</h3>
+                <h4 class="card-text text-center text-primary">${phone.brand}</h4>
                 <div class="d-flex justify-content-center btn-lg">
                 <button onclick="phoneDetails('${phone.slug}')" type="button" class="btn btn-primary btn-lg">Details</button>
                 </div>
@@ -41,6 +51,7 @@ const ShowPhone = phones =>{
             `;
             showResult.appendChild(div);
         });
+       }
     }
     
     // Phone Details
