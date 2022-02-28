@@ -3,10 +3,23 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+main{
+    width: 95%;
+    margin: auto;
+    overflow-x: hidden;
+}
 .card{
     box-shadow: 7px 7px 7px #88888873;
 }
-#result-container{
+#result-container,#details-container{
     width: 90%;
     margin: auto;
+}
+.child{
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.child img{
+    margin-left: 70px;
 }
