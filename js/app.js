@@ -68,7 +68,6 @@ const ShowPhone = phones =>{
     
     // Details About Phone
     const moreDetails = data =>{
-        console.log(data);
         if(data.releaseDate != 0 && data.others !=0 && data.slug != 'apple_iphone_13_mini-11104'){
         const details =  document.getElementById('phone-details');
         details.textContent='';
