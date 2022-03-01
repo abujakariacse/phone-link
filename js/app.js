@@ -4,8 +4,7 @@ const searchPhone = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
-    
-    
+
     if(searchText == ''){
         searchMessage.style.display='block';
         
@@ -17,11 +16,8 @@ const searchPhone = () =>{
     .then(res => res.json())
     .then(data => ShowPhone(data.data))
     }
-    
-    
 
 }
-
 
 // Search Result
 const ShowPhone = phones =>{
@@ -45,8 +41,7 @@ const ShowPhone = phones =>{
                 <div class="d-flex justify-content-center btn-lg">
                 <button onclick="phoneDetails('${phone.slug}')" type="button" class="btn btn-primary btn-lg">Details</button>
                 </div>
-            </div>
-            
+            </div> 
         </div>
             `;
             showResult.appendChild(div);
@@ -59,11 +54,13 @@ const ShowPhone = phones =>{
         const url = `https://openapi.programming-hero.com/api/phone/${id}`;
         fetch(url)
         .then(res => res.json())
-        .then(data => moreInfo(data.data))
+        .then(data => moreDetails(data.data))
     };
     
-    const moreInfo = data =>{
+    // Details About Phone
+    const moreDetails = data =>{
         console.log(data);
+        if(data.releaseDate !=0){
         const details =  document.getElementById('phone-details');
         details.textContent='';
         details.style.backgroundColor = '#fff7e0a1';
@@ -75,15 +72,42 @@ const ShowPhone = phones =>{
         const phoneDetails = document.createElement('div');
         phoneDetails.classList.add('child')
         phoneDetails.innerHTML = `
-        <h4>Name: ${data.name}</h4>
+        <h5>Name: ${data.name}</h5>
         <h5>Realease Date: ${data.releaseDate}</h5>
-        <h4 class="fw-bold">Main Features</h4>
+        <h5 class="fw-bold">Main Features:-</h5>
         <h5>Chipset: ${data.mainFeatures.chipSet}</h5>
         <h5>Display: ${data.mainFeatures.displaySize}</h5>
         <h5>Memory: ${data.mainFeatures.memory}</h5>
         `;
         details.appendChild(PhoneImg);
         details.appendChild(phoneDetails);
+        }
+        else{
+        const details =  document.getElementById('phone-details');
+        details.textContent='';
+        details.style.backgroundColor = '#fff7e0a1';
+        const PhoneImg = document.createElement('div');
+        PhoneImg.classList.add('child');
+        PhoneImg.innerHTML = `
+        <image src="${data.image}">
+        `;
+        const phoneDetails = document.createElement('div');
+        phoneDetails.classList.add('child')
+        phoneDetails.innerHTML = `
+        <h5>Name: ${data.name}</h5>
+        <h5>Realease Date: Not Published</h5>
+        <h5 class="fw-bold">Main Features:-</h5>
+        <h5>Chipset: ${data.mainFeatures.chipSet}</h5>
+        <h5>Display: ${data.mainFeatures.displaySize}</h5>
+        <h5>Memory: ${data.mainFeatures.memory}</h5>
+        `;
+        details.appendChild(PhoneImg);
+        details.appendChild(phoneDetails);
+        }
+}
 
-        
-    }
+
+
+
+
+

@@ -8,7 +8,7 @@ main{
     margin: auto;
     overflow-x: hidden;
 }
-#noResultMessage{
+#noResultMessage,#noInput{
     display: none;
 }
 .card{
@@ -20,9 +20,12 @@ main{
 }
 .child{
     padding: 30px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin-left: 10%px;
 }
 .child img{
-    margin-left: 70px;
+    margin-right:80px;
+    height: 90%;
+    
 }
