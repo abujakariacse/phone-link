@@ -22,10 +22,10 @@ main{
     padding: 30px;
     justify-content: space-between;
     align-items: center;
-    margin-left: 10%px;
+    margin-left: 10%;
 }
 .child img{
     margin-right:80px;
-    height: 90%;
+    height: 80%;
     
 }
