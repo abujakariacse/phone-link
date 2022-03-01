@@ -2,7 +2,13 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    
 }
+
+#bg{
+    background-color: #50dbb469;
+}
+
 main{
     width: 95%;
     margin: auto;
@@ -12,7 +18,11 @@ main{
     display: none;
 }
 .card{
-    box-shadow: 7px 7px 7px #88888873;
+    box-shadow: 7px 7px 10px #88888873;
+}
+#phone-details{
+    border-radius: 10px;
+    background-color: #23c5ed3f;
 }
 #result-container,#details-container{
     width: 90%;
