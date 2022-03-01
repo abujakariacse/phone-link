@@ -1,4 +1,7 @@
+// Global Variable for throwing error
 const searchMessage= document.getElementById('noResultMessage');
+const showResult = document.getElementById('search-result');
+const details =  document.getElementById('phone-details');
 // Search & Load data from API
 const searchPhone = () =>{
     const searchField = document.getElementById('search-field');
@@ -7,7 +10,9 @@ const searchPhone = () =>{
 
     if(searchText == ''){
         searchMessage.style.display='block';
-        
+        details.textContent = '';
+        showResult.textContent = '';
+
     }
     else{
     searchMessage.style.display='none';
@@ -23,8 +28,10 @@ const searchPhone = () =>{
 const ShowPhone = phones =>{
     const showResult = document.getElementById('search-result');
     showResult.textContent = ''; 
+    details.textContent = '';
        if(phones.length == 0){
            searchMessage.style.display='block';
+           showResult.textContent = '';
        }
        else{
         phones.forEach(phone => {
@@ -59,7 +66,6 @@ const ShowPhone = phones =>{
     
     // Details About Phone
     const moreDetails = data =>{
-        console.log(data);
         
         if(data.releaseDate != 0 && data.others !=0 && data.slug != 'apple_iphone_13_mini-11104'){
         const details =  document.getElementById('phone-details');
